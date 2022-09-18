@@ -10,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.BookItem;
 import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
@@ -153,7 +154,7 @@ public class EnchantmentRequirements {
 		pLevelUpper = Mth.clamp(Math.round(pLevelUpper + pLevelUpper * fUpper), 1, Integer.MAX_VALUE);
 		tip.add(Component.translatable("tooltip.enchantmentrequirements.true_cost", pLevelLower, pLevelUpper).withStyle(ChatFormatting.DARK_AQUA));
 
-		if (!ench.canEnchant(enchanting)) {
+		if (!ench.canEnchant(enchanting) && !(enchanting.getItem() instanceof BookItem)) {
 			tip.add(Component.translatable("tooltip.enchantmentrequirements.cant_enchant").withStyle(ChatFormatting.RED));
 		}
 	}
