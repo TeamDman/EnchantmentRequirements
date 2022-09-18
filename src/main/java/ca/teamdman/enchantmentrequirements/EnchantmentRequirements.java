@@ -154,7 +154,7 @@ public class EnchantmentRequirements {
 		pLevelUpper = Mth.clamp(Math.round(pLevelUpper + pLevelUpper * fUpper), 1, Integer.MAX_VALUE);
 		tip.add(Component.translatable("tooltip.enchantmentrequirements.true_cost", pLevelLower, pLevelUpper).withStyle(ChatFormatting.DARK_AQUA));
 
-		if (!ench.canEnchant(enchanting) && !(enchanting.getItem() instanceof BookItem)) {
+		if (!ench.canEnchant(enchanting) && !((enchanting.getItem() instanceof BookItem) && ench.isAllowedOnBooks())) {
 			tip.add(Component.translatable("tooltip.enchantmentrequirements.cant_enchant").withStyle(ChatFormatting.RED));
 		}
 	}
