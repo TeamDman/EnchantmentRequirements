@@ -43,7 +43,7 @@ public class ClientStuff {
 
 	private static void handleItemPower(ItemTooltipEvent event, ItemStack stack, ClientLevel level, BlockPos pos, List<Component> tip) {
 		int enchantValue = stack.getEnchantmentValue();
-		if (enchantValue == 0) return;
+		if (enchantValue < Config.MIN_ENCHANTMENT_VALUE_TO_SHOW.get()) return;
 		tip.add(Component.translatable("tooltip.enchantmentrequirements.value", enchantValue));
 	}
 
